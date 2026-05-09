@@ -14,65 +14,98 @@ st.set_page_config(page_title="LifeFlow Pro", page_icon="🩸", layout="centered
 
 st.markdown("""
     <style>
-    /* Hide Default Headers */
+    /* 1. Global Page Reset & Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    
+    .stApp {
+        background-color: #F8FAFC;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    /* 2. Hide Native Web Elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    
-    /* Background & Font */
-    .stApp { background-color: #F8F9FA; }
-    
-    /* Card Layouts */
+    .block-container {padding-top: 2rem; padding-bottom: 5rem;}
+
+    /* 3. The "Play Store Card" Layout */
+    /* Applies professional spacing, borders, and depth to all content blocks */
     div[data-testid="stVerticalBlock"] > div:has(div.stMarkdown) {
-        background-color: white;
-        padding: 25px;
-        border-radius: 24px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-        border: 1px solid #f0f0f0;
+        background-color: #FFFFFF;
+        padding: 24px;
+        border-radius: 20px;
+        box-shadow: 0 4px 1px rgba(0, 0, 0, 0.01), 0 2px 1px rgba(0, 0, 0, 0.02);
+        border: 1px solid #E2E8F0;
         margin-bottom: 20px;
     }
 
-    /* High-End Buttons */
+    /* 4. Custom Buttons (Mobile CTA Look) */
     .stButton>button {
         width: 100%;
-        border-radius: 18px;
+        border-radius: 12px;
         height: 3.8em;
-        background: linear-gradient(135deg, #FF4B4B 0%, #AF1B1B 100%);
+        background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%);
         color: white;
         font-weight: 700;
         font-size: 16px;
         border: none;
-        box-shadow: 0 6px 20px rgba(211, 47, 47, 0.25);
-        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(185, 28, 28, 0.25);
+        transition: all 0.2s ease-in-out;
     }
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(211, 47, 47, 0.35);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(185, 28, 28, 0.35);
+        background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+    }
+    .stButton>button:active {
+        transform: translateY(1px);
     }
     
-    /* Modern Input Fields */
+    /* 5. Minimalist Input Fields */
     .stTextInput>div>div>input {
-        border-radius: 12px;
-        border: 1px solid #E0E0E0;
+        border-radius: 10px;
+        border: 1px solid #CBD5E1;
+        background-color: #FDFDFD;
         padding: 12px;
+        font-size: 16px;
+    }
+    .stTextInput>div>div>input:focus {
+        border-color: #EF4444;
+        box-shadow: 0 0 0 1px #EF4444;
     }
 
-    /* Custom Navigation Tabs */
+    /* 6. Clean Navigation Tabs */
     .stTabs [data-baseweb="tab-list"] {
         display: flex;
         justify-content: center;
-        background-color: #eee;
-        padding: 5px;
-        border-radius: 15px;
-        margin-bottom: 25px;
+        background-color: #EDF2F7;
+        padding: 6px;
+        border-radius: 30px;
+        margin: 0 auto 30px auto;
+        max-width: 90%;
     }
     .stTabs [data-baseweb="tab"] {
         font-weight: 600;
-        border-radius: 12px;
+        color: #4A5568;
+        border-radius: 25px;
+        padding: 10px 20px;
     }
+    .stTabs [aria-selected="true"] {
+        background-color: #FFFFFF;
+        color: #B91C1C !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* 7. Typography Overrides */
+    h1 { font-weight: 800; color: #1A202C; }
+    h2 { font-weight: 700; color: #2D3748; }
+    h3 { font-weight: 600; color: #4A5568; }
+    .stMarkdown p { color: #4A5568; line-height: 1.6; }
+    
+    /* 8. Metric Polish */
+    [data-testid="stMetricValue"] { color: #B91C1C; font-weight: 700; }
     </style>
     """, unsafe_allow_html=True)
-
 # 3. APP STATE MANAGEMENT
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
