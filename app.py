@@ -274,7 +274,7 @@ st.markdown("""
         font-weight: 800;
         background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: #111827;
         background-clip: text;
     }
     
